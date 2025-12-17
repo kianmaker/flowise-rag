@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'AI Assistant - RAG Chatbot',
-  description: 'AI-powered chatbot with RAG capabilities powered by Flowise',
+  title: 'KIAN2 Clothing - Fashion Assistant',
+  description: 'KIAN2 Clothing Store AI Assistant - Get help with products, sizing, pricing, and store information',
 }
 
 export default function RootLayout({

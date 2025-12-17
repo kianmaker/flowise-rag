@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Loader2 } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShirt, faUser, faSpinner, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { flowiseService, ChatMessage } from '@/services/flowiseService';
 
 interface Message {
@@ -97,11 +99,11 @@ export default function ChatInterface() {
       <div className="messages-area">
         {messages.length === 0 && (
           <div className="empty-state">
-            <Bot className="empty-state-icon" />
-            <h2 className="empty-state-title">Welcome to AI Assistant</h2>
+            <FontAwesomeIcon icon={faShirt} className="empty-state-icon" />
+            <h2 className="empty-state-title">Welcome to KIAN2 Clothing</h2>
             <p className="empty-state-text">
-              Ask me anything! I'm powered by Flowise with RAG capabilities to provide
-              accurate and contextual responses.
+              Ask me anything about our clothing store! I can help you with product information, 
+              sizing, pricing, store hours, and more. Powered by Flowise with RAG capabilities.
             </p>
           </div>
         )}
@@ -115,7 +117,7 @@ export default function ChatInterface() {
           >
             {message.role === 'assistant' && (
               <div className="message-avatar message-avatar-bot">
-                <Bot className="message-avatar-icon" />
+                <FontAwesomeIcon icon={faShirt} className="message-avatar-icon" />
               </div>
             )}
 
@@ -148,7 +150,7 @@ export default function ChatInterface() {
 
             {message.role === 'user' && (
               <div className="message-avatar message-avatar-user">
-                <User className="message-avatar-icon message-avatar-icon-user" />
+                <FontAwesomeIcon icon={faUser} className="message-avatar-icon message-avatar-icon-user" />
               </div>
             )}
           </div>
@@ -157,10 +159,10 @@ export default function ChatInterface() {
         {isLoading && (
           <div className="loading-container">
             <div className="message-avatar message-avatar-bot">
-              <Bot className="message-avatar-icon" />
+              <FontAwesomeIcon icon={faShirt} className="message-avatar-icon" />
             </div>
             <div className="loading-bubble">
-              <Loader2 className="loading-spinner" />
+              <FontAwesomeIcon icon={faSpinner} className="loading-spinner" spin />
             </div>
           </div>
         )}
@@ -194,10 +196,10 @@ export default function ChatInterface() {
             className="send-button"
           >
             {isLoading ? (
-              <Loader2 className="send-button-icon loading-spinner" />
+              <FontAwesomeIcon icon={faSpinner} className="send-button-icon loading-spinner" spin />
             ) : (
               <>
-                <Send className="send-button-icon" />
+                <FontAwesomeIcon icon={faPaperPlane} className="send-button-icon" />
                 <span className="send-button-text">Send</span>
               </>
             )}

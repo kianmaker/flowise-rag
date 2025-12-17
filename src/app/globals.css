@@ -97,6 +97,14 @@ body {
   flex-shrink: 0;
 }
 
+.main-icon {
+  font-size: 3rem;
+  color: rgb(var(--white));
+  margin-bottom: 0.75rem;
+  display: block;
+  opacity: 0.9;
+}
+
 .main-title {
   font-size: 2.5rem;
   font-weight: 700;
@@ -111,6 +119,15 @@ body {
   color: rgb(var(--gray-400));
   font-weight: 400;
   letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.subtitle-icon {
+  font-size: 0.9rem;
+  color: rgb(var(--gray-400));
 }
 
 @media (max-width: 768px) {
@@ -185,8 +202,7 @@ body {
 }
 
 .empty-state-icon {
-  width: 60px;
-  height: 60px;
+  font-size: 60px;
   margin-bottom: 1rem;
   color: rgb(var(--gray-500));
   opacity: 0.8;
@@ -243,8 +259,7 @@ body {
 }
 
 .message-avatar-icon {
-  width: 18px;
-  height: 18px;
+  font-size: 18px;
   color: rgb(var(--white));
 }
 
@@ -339,9 +354,7 @@ body {
 }
 
 .loading-spinner {
-  width: 18px;
-  height: 18px;
-  animation: spin 1s linear infinite;
+  font-size: 18px;
   color: rgb(var(--gray-400));
 }
 
@@ -445,8 +458,7 @@ body {
 }
 
 .send-button-icon {
-  width: 18px;
-  height: 18px;
+  font-size: 18px;
   flex-shrink: 0;
 }
 
@@ -478,8 +490,11 @@ body {
   }
   
   .message-avatar-icon {
-    width: 16px;
-    height: 16px;
+    font-size: 16px;
+  }
+  
+  .main-icon {
+    font-size: 2.5rem;
   }
   
   .input-area {

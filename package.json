@@ -1,7 +1,7 @@
 {
   "name": "flowise-rag-chatbot",
   "version": "1.0.0",
-  "description": "KIAN2 Clothing Store AI Assistant     - RAG chatbot for KIAN2 clothing store with Flowise integration",
+  "description": "KIAN2 Clothing Store AI Assistant - RAG chatbot for KIAN2 clothing store with Flowise integration",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,7 +14,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "axios": "^1.6.2",
-    "lucide-react": "^0.294.0"
+    "lucide-react": "^0.294.0",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.5",
