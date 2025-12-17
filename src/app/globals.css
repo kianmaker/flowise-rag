@@ -3,50 +3,191 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  /* Fashion-inspired color palette */
+  --fashion-primary: 218, 165, 32; /* Rose Gold */
+  --fashion-secondary: 192, 192, 192; /* Silver */
+  --fashion-accent: 255, 105, 180; /* Hot Pink */
+  --fashion-neutral: 250, 250, 250; /* Cream White */
+  --fashion-dark: 20, 20, 20; /* Charcoal */
+  --fashion-light: 255, 248, 240; /* Soft Ivory */
+  --fashion-border: 230, 230, 230;
+  
+  --foreground-rgb: 30, 30, 30;
+  --background-start-rgb: 255, 248, 240;
   --background-end-rgb: 255, 255, 255;
+  
+  /* Fashion gradients */
+  --gradient-fashion: linear-gradient(135deg, rgba(255, 182, 193, 0.1) 0%, rgba(255, 218, 185, 0.1) 50%, rgba(255, 248, 240, 0.1) 100%);
+  --gradient-luxury: linear-gradient(135deg, rgba(218, 165, 32, 0.15) 0%, rgba(192, 192, 192, 0.15) 100%);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 250, 250, 250;
+    --background-start-rgb: 20, 20, 20;
+    --background-end-rgb: 30, 30, 30;
+    --fashion-neutral: 40, 40, 40;
+    --fashion-light: 25, 25, 25;
+    --fashion-border: 60, 60, 60;
+    --gradient-fashion: linear-gradient(135deg, rgba(255, 105, 180, 0.1) 0%, rgba(218, 165, 32, 0.1) 50%, rgba(20, 20, 20, 0.1) 100%);
+    --gradient-luxury: linear-gradient(135deg, rgba(218, 165, 32, 0.2) 0%, rgba(192, 192, 192, 0.2) 100%);
   }
+}
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  background: 
+    var(--gradient-fashion),
+    linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.01em;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* Fashion-themed utility classes */
+  .fashion-gradient {
+    background: var(--gradient-luxury);
+  }
+  
+  .fashion-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  
+  .fashion-glow {
+    box-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
+  }
+  
+  .fashion-border-gradient {
+    border-image: linear-gradient(135deg, rgba(218, 165, 32, 0.5), rgba(192, 192, 192, 0.5)) 1;
+  }
 }
 
-/* Custom scrollbar */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Elegant scrollbar - Fashion style */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: rgba(var(--fashion-neutral), 0.5);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
+  background: linear-gradient(
+    135deg,
+    rgba(218, 165, 32, 0.6),
+    rgba(192, 192, 192, 0.6)
+  );
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: linear-gradient(
+    135deg,
+    rgba(218, 165, 32, 0.8),
+    rgba(192, 192, 192, 0.8)
+  );
+  background-clip: padding-box;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(218, 165, 32, 0.6) rgba(var(--fashion-neutral), 0.5);
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(218, 165, 32, 0.3);
+  color: rgb(var(--foreground-rgb));
+}
+
+::-moz-selection {
+  background-color: rgba(218, 165, 32, 0.3);
+  color: rgb(var(--foreground-rgb));
+}
+
+/* Smooth focus styles */
+:focus-visible {
+  outline: 2px solid rgba(218, 165, 32, 0.5);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Elegant animations for interactive elements */
+button, a, input, textarea {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(218, 165, 32, 0.2);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Fashion-inspired input styling */
+input:focus, textarea:focus {
+  box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.1);
+  border-color: rgba(218, 165, 32, 0.5);
+}
+
+/* Elegant card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
