@@ -1,7 +1,7 @@
 {
   "name": "flowise-rag-chatbot",
   "version": "1.0.0",
-  "description": "AI Assistant website with Flowise integration and RAG chatbot",
+  "description": "KIAN2 Clothing Store AI Assistant - RAG chatbot for KIAN2 clothing store with Flowise integration",
   "private": true,
   "scripts": {
     "dev": "next dev",

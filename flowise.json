@@ -1,6 +1,6 @@
 {
     "name": "TXT RAG In-Memory (OpenAI)",
-    "description": "Clean RAG setup using TXT files, OpenAI embeddings, and in-memory vector store",
+    "description": "KIAN2 Clothing Store RAG chatbot - AI assistant for KIAN2 clothing store information, product inquiries, and customer service using TXT files, OpenAI embeddings, and in-memory vector store",
     "nodes": [
       {
         "id": "textFile_1",
