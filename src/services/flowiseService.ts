@@ -21,10 +21,12 @@ export interface ChatResponse {
 class FlowiseService {
   private apiUrl: string;
   private chatflowId: string;
+  private apiKey: string | undefined;
 
   constructor() {
     this.apiUrl = process.env.NEXT_PUBLIC_FLOWISE_API_URL || 'http://localhost:3000';
     this.chatflowId = process.env.NEXT_PUBLIC_FLOWISE_CHATFLOW_ID || '';
+    this.apiKey = process.env.NEXT_PUBLIC_FLOWISE_API_KEY;
   }
 
   /**
@@ -35,6 +37,15 @@ class FlowiseService {
     history: Array<{ question: string; answer: string }> = []
   ): Promise<ChatResponse> {
     try {
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+      };
+
+      // Add API key if provided
+      if (this.apiKey) {
+        headers['x-api-key'] = this.apiKey;
+      }
+
       const response = await axios.post(
         `${this.apiUrl}/api/v1/prediction/${this.chatflowId}`,
         {
@@ -43,9 +54,7 @@ class FlowiseService {
           overrideConfig: {},
         },
         {
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers,
         }
       );
 
@@ -68,7 +77,14 @@ class FlowiseService {
    */
   async healthCheck(): Promise<boolean> {
     try {
-      const response = await axios.get(`${this.apiUrl}/api/v1/health`);
+      const headers: Record<string, string> = {};
+      
+      // Add API key if provided
+      if (this.apiKey) {
+        headers['x-api-key'] = this.apiKey;
+      }
+
+      const response = await axios.get(`${this.apiUrl}/api/v1/health`, { headers });
       return response.status === 200;
     } catch (error) {
       return false;
