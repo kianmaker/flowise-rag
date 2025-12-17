@@ -1,0 +1,96 @@
+{
+    "name": "TXT RAG In-Memory (OpenAI)",
+    "description": "Clean RAG setup using TXT files, OpenAI embeddings, and in-memory vector store",
+    "nodes": [
+      {
+        "id": "textFile_1",
+        "type": "textFile",
+        "position": { "x": 0, "y": 0 },
+        "data": {
+          "label": "Text File",
+          "name": "textFile",
+          "inputs": {}
+        }
+      },
+      {
+        "id": "textSplitter_1",
+        "type": "recursiveCharacterTextSplitter",
+        "position": { "x": 300, "y": 0 },
+        "data": {
+          "label": "Recursive Character Text Splitter",
+          "name": "recursiveCharacterTextSplitter",
+          "inputs": {
+            "chunkSize": 1000,
+            "chunkOverlap": 200
+          }
+        }
+      },
+      {
+        "id": "openAIEmbeddings_1",
+        "type": "openAIEmbeddings",
+        "position": { "x": 600, "y": 0 },
+        "data": {
+          "label": "OpenAI Embeddings",
+          "name": "openAIEmbeddings",
+          "inputs": {
+            "model": "text-embedding-3-small"
+          }
+        }
+      },
+      {
+        "id": "memoryVectorStore_1",
+        "type": "memoryVectorStore",
+        "position": { "x": 900, "y": 0 },
+        "data": {
+          "label": "In-Memory Vector Store",
+          "name": "memoryVectorStore",
+          "inputs": {}
+        }
+      },
+      {
+        "id": "retriever_1",
+        "type": "vectorStoreRetriever",
+        "position": { "x": 1200, "y": 0 },
+        "data": {
+          "label": "Vector Store Retriever",
+          "name": "vectorStoreRetriever",
+          "inputs": {
+            "k": 4,
+            "searchType": "similarity"
+          }
+        }
+      },
+      {
+        "id": "chatOpenAI_1",
+        "type": "chatOpenAI",
+        "position": { "x": 1500, "y": 0 },
+        "data": {
+          "label": "ChatOpenAI",
+          "name": "chatOpenAI",
+          "inputs": {
+            "model": "gpt-4o-mini",
+            "temperature": 0.2
+          }
+        }
+      },
+      {
+        "id": "chatOutput_1",
+        "type": "chatOutput",
+        "position": { "x": 1800, "y": 0 },
+        "data": {
+          "label": "Chat Output",
+          "name": "chatOutput",
+          "inputs": {}
+        }
+      }
+    ],
+    "edges": [
+      { "source": "textFile_1", "target": "textSplitter_1" },
+      { "source": "textSplitter_1", "target": "openAIEmbeddings_1" },
+      { "source": "openAIEmbeddings_1", "target": "memoryVectorStore_1" },
+      { "source": "memoryVectorStore_1", "target": "retriever_1" },
+      { "source": "retriever_1", "target": "chatOpenAI_1" },
+      { "source": "chatOpenAI_1", "target": "chatOutput_1" }
+    ]
+  }
+  
